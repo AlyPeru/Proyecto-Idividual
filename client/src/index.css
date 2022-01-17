@@ -1,0 +1,24 @@
+body {
+  background: #D0E4F5 url(../src/img/14726-pokemon.jpg);
+  /* background: #D0E4F5 url("https://assets.pokemon.com//assets/cms2-es-es/img/misc/virtual-backgrounds/masters/forest.jpg"); */
+  /* background: url('https://assets.pokemon.com//assets/cms2-es-es/img/misc/virtual-backgrounds/masters/forest.jpg'); */
+  /* https://assets.pokemon.com//assets/cms2-es-es/img/misc/virtual-backgrounds/pokemon/grookey.jpg */
+  /*  */
+  /* background: url('https://vader.news/__export/1636260165164/sites/gadgets/img/2021/11/07/breaking-bad.jpg_1752373261.jpg'); */
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+h1 {
+  color: blueviolet;
+  text-transform: capitalize;
+ 
+}

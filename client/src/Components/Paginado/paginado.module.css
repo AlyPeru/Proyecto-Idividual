@@ -1,0 +1,30 @@
+.num_container {
+  display: inline-flex;
+  margin-top: 30px;
+}
+
+.button_page{
+    /* color: blueviolet; */
+    color:whitesmoke;
+  padding: 10px;
+  list-style: none;
+  font-size: 25px;
+  font-family: "Bebas Neue", cursive;
+  background: rgb(254, 151, 104);
+  background: radial-gradient(
+    circle,
+    rgba(104, 254, 141, 0.863) 0%,
+    rgba(247, 196, 48, 1) 100%
+  );
+  /* box-shadow: 3px 0px 18px 17px #131413 inset; */
+  border-radius: 50px;
+  margin: 20px;
+  width: 60px;
+  height: 60px;
+  box-shadow: rgba(68, 68, 68, 0.45) 0px 25px 20px -20px;
+}
+
+.button_page:hover {
+    box-shadow: rgba(59, 59, 59, 0.384) 3px 3px 6px 0px inset,
+      rgba(117, 117, 117, 0.384) -3px -3px 6px 1px inset;
+  }
