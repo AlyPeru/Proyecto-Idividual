@@ -16,12 +16,14 @@ export default function Pokemon({ name, imagen, types, id, createdInDb }) {
 
     return (
         <div className={css.pokemon}>
+        <NavLink to={"/detail/" + id}>
             <div className={css.info}>
                 {/* ojo aqui llamaria completo la tarjeta */}
-                <NavLink to={"/detail/" + id}><h1 className={css.name}>{name}</h1></NavLink>
+                <h1 className={css.name}>{name}</h1>
             </div>
             <div className={css.typeContainer}>{typesDb}</div>
             <img className={css.img} src={imagen} alt='img not found' width='200px' height='250px' />
+        </NavLink>
         </div>
     )
 }

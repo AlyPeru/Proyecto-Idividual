@@ -1,9 +1,6 @@
-
-
 const initialState = {
     pokemons: [],
     allPokemons: [],
-
     types: [],
     details: []
 }
@@ -37,6 +34,11 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 details: action.payload
             }
+        case 'CLEAN_DETAIL':
+            return{
+                ...state,
+                details: []
+            }
         case 'ORDER_POKEMON_BY_ATTACK':
             const sortAttack = action.payload === 'min' ?
 
@@ -61,7 +63,7 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 pokemons: sortAttack
             }
-        case 'ORDER_BY_NAME':
+        case 'ORDER_BY_AZ':
             const sortName = action.payload === 'asc' ?
                 state.pokemons.sort(function (a, b) {
                     if (a.name > b.name) {
@@ -89,30 +91,8 @@ function rootReducer(state = initialState, action) {
                 state.allPokemons.filter(el => !el.createdInDb)
             return {
                 ...state,
-                pokemons: action.payload === 'All' ? state.pokemons : filterCreate
+                pokemons: action.payload === 'All' ? state.allPokemons : filterCreate
             }
-        //filtrarlos y mandarlos a un nuevo array 
-        //filterType[i] vendria a ser cada uno de los obj {
-        //     id: 31,
-        //     name: 'nidoqueen',
-        //     hp: 90,
-        //     attack: 92,
-        //     defense: 87,
-        //     speed: 76,
-        //     sprites: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/31.svg',
-        //     height: 13,
-        //     weight: 600,
-        //     type: [ 'poison ', 'ground ' ]
-        //   },
-
-        //se transforma a "types": [
-        //     {
-        //         "name": "flying"
-        //     },
-        //     {
-        //         "name": "bug"
-        //     }
-        // ]
 
         case 'FILTER_POKEMON_BY_TYPE':
             //db yo debo enviar ['',''] y lo recupera [{}, {}]

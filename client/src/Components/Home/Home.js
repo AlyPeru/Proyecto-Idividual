@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemons, orderByName, filterPokemonByCreate, getTypes, filterPokemonByType, orderPokemonByAttack } from "../../StoreFiles/Actions";
-// import { Link } from "react-router-dom";
+import { getPokemons, orderByAZ, filterPokemonByCreate, getTypes, filterPokemonByType, orderPokemonByAttack } from "../../StoreFiles/Actions";
 import Pokemon from '../Pokemon/Pokemon';
 import Paginado from "../Paginado/Paginado";
 import NavBar from "../NavBar/NavBar";
-// import SearchBar from "../SearchBar/SearchBar";
+
 
 import css from './Home.module.css';
 
 export default function Home() {
     var i = 1;
+    
+    
     const dispatch = useDispatch();
     const allPokemons = useSelector((state) => state.pokemons);
-
     const types = useSelector((state) => state.types);
-    // console.log(allPokemons)
+
     //*****************PAGINADO************************* */
     const [currentPage, setCurrentPage] = useState(1);
     const [pokePerPage, setPage] = useState(12);
@@ -26,13 +26,14 @@ export default function Home() {
     const paginado = (numPag) => {
         setCurrentPage(numPag)
     }
+
     const [order, setOrder] = useState('');
 
     useEffect(() => {
+        
         dispatch(getTypes())
         dispatch(getPokemons())
     }, [dispatch])
-
 
     // *********************FILTRO TYPES*****************************
     function handleChangeTypes(e) {
@@ -42,25 +43,16 @@ export default function Home() {
         setCurrentPage(1)
         setOrder(`Ordenar ${e.target.value}`)
     }
-    // console.log(allPokemons)
-    // console.log(types)
+    
      // ******************FILTROS CREATED***********************
      function handleCreated(e) {
         dispatch(filterPokemonByCreate(e.target.value))
     }
 
-    // // ****************************BOTON HOME******************
-    // function handleClickHome(e) {
-    //     e.preventDefault()
-    //     dispatch(getPokemons())
-    //     setCurrentPage(1)
-    //     setOrder(`Ordenar ${e.target.value}`)
-    // }
-
     // ********************  ORDENAMIENTOS ********************
     function handleSort(e) {
         e.preventDefault()
-        dispatch(orderByName(e.target.value))
+        dispatch(orderByAZ(e.target.value))
         setCurrentPage(1)
         setOrder(`Ordenar ${e.target.value}`)
     };
@@ -76,7 +68,7 @@ export default function Home() {
         <div>
            
             <h1> <b>Pokemon Main Page</b></h1>
-            {/* <button onClick={e => { handleClickHome(e) }}>Cargar la página nuevamente</button> */}
+            
             <NavBar/>
             <div>
 
@@ -108,13 +100,14 @@ export default function Home() {
                 </select>
 
                 {/* <Paginado2 /> */}
-
+                <button onClick={() => paginado(currentPage === 4 ? currentPage : currentPage + 1)}>next</button>
+                <button onClick={() => paginado(currentPage === 1 ? currentPage : currentPage - 1)}>prev</button>
                 <Paginado allPokemons={allPokemons.length} paginado={paginado} pokePerPage={pokePerPage} />
                 
                 <div className={css.container_home}>
                     {allPokemons.length > 0 ?
     
-                        currentPokem?.map((el,il) => {
+                        typeof(currentPokem[0])=== 'string'? <div className = {css.error}>{currentPokem[0]}</div>:currentPokem?.map((el,il) => {
                             return (
                                 <div className={css.pokemon} key={il}>
 

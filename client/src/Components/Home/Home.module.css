@@ -1,22 +1,32 @@
-
 button {
-    color: whitesmoke;
-    margin-left: 15px;
-    font-size: 20px;
-    font-weight: 20px;
-    padding: 5px     10px;
-    border-radius: 15px;
-    background-color: rgba(18, 196, 27, 0.746);
+  color: whitesmoke;
+  margin-left: 15px;
+  font-size: 20px;
+  font-weight: 20px;
+  padding: 5px 10px;
+  border-radius: 15px;
+  background-color: rgba(18, 196, 27, 0.746);
 
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;}
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
 
 .container_home {
-    display: inline-grid;
-    grid-template-columns: repeat(6, 5fr);
-    grid-template-rows: repeat(2, 1fr);
-    margin: 10px;
-    margin-top: 30px;
-  }
+  display: inline-grid;
+  grid-template-columns: repeat(6, 5fr);
+  grid-template-rows: repeat(2, 1fr);
+  margin: 10px;
+  margin-top: 30px;
+}
 
+.error {
+  background: rgba(247, 241, 241, 0.37);
+  justify-content: center;
+  align-items: center;
+  color: brown;
+  font-size: 20px;
+  margin-left: 700px;
+  width: 40%;
+  padding: 3px;
+}

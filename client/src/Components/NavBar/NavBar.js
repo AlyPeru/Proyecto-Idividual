@@ -12,11 +12,9 @@ export default function NavBar(){
     const dispatch = useDispatch();
 
     // ****************************BOTON Reload******************
-    function handleClickHome(e) {
+    function handleClickReload(e) {
         e.preventDefault()
         dispatch(getPokemons())
-        // setCurrentPage(1)
-        // setOrder(`Ordenar ${e.target.value}`)
     }
 
     useEffect(() => {
@@ -26,7 +24,7 @@ export default function NavBar(){
     return(
        <div className={css.contenedor}>
            <img src={Logo} className={css.img} alt="Logo"></img>
-           <button className ={css.button} onClick={e => { handleClickHome(e) }}>Reload</button>
+           <button className ={css.button} onClick={e => { handleClickReload(e) }}>Reload</button>
            <SearchBar className={css.SearchBar} />
             <Link to='/pokemon' className={css.create}>Crea un nuevo Pokemon</Link>
            

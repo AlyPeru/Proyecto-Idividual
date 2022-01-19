@@ -10,15 +10,33 @@ export default function SearchBar() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        const resp = name?.toLowerCase()
+        if(name ===''){
+            return alert('no puede estar vacio')
+        }
+        const resp = name?.toLowerCase();
         dispatch(getNamePokemon(resp));
         setName("");
     }
 
+    function handleSearch(e){
+        e.preventDefault()
+
+        if(e.target.value === ''){
+            
+            setName(e.target.value)
+        }else{
+
+            setName(e.target.value)
+        }
+
+    }
+
+
     return (
         <div>
-            <input type="text" placeholder="Buscar...." onChange={(e) => setName(e.target.value)} value={name} />
+            <input type="text" placeholder="Buscar...." onChange={(e) => handleSearch(e) } value={name} />
             <button type='submit' onClick={(e) => handleSubmit(e)}>Buscar</button>
+    
         </div>
     )
 }

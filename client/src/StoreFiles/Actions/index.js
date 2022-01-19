@@ -20,7 +20,10 @@ export function getNamePokemon(name) {
                 payload: json.data
             })
         } catch (error) {
-            console.log(error)
+            return dispatch({
+                type: 'GET_NAME_POKEMON',
+                payload: error
+            })
         }
     };
 }
@@ -49,36 +52,39 @@ export function postPokemon(payload) {
 }
 
 
-                        export function getDetails(id) {
-                            return async function (dispatch) {
-                                try {
-                                    let json = await axios.get('http://localhost:3001/pokemons/' + id)
-                                    return dispatch({
-                                        type: 'GET_DETAILS',
-                                        payload: json.data
-                                    })
-                                } catch (error) {
-                                    console.log(error)
-                                }
-                            }
-                        }
-                        //ordenamietos
-                        export function orderPokemonByAttack(payload) {
-                            return { type: 'ORDER_POKEMON_BY_ATTACK', payload }
-                        }
+export function getDetails(id) {
+    return async function (dispatch) {
+        try {
+            let json = await axios.get('http://localhost:3001/pokemons/' + id)
+            return dispatch({
+                type: 'GET_DETAILS',
+                payload: json.data
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+//ordenamietos
+export function orderPokemonByAttack(payload) {
+    return { type: 'ORDER_POKEMON_BY_ATTACK', payload }
+}
 
-                        export function orderByName(payload) { //FILTER_POQUEMON_BY_NAME
-                            return { type: 'ORDER_BY_NAME', payload }
-                        }
-                        //Filtros
+export function orderByAZ(payload) { //FILTER_POQUEMON_BY_NAME
+    return { type: 'ORDER_BY_AZ', payload }
+}
+//Filtros
 
-                        export function filterPokemonByCreate(payload) {
-                            return { type: 'FILTER_POKEMON_BY_CREATE', payload }
-                        }
-                        //recibo un string o ['', '']
-                        export function filterPokemonByType(type) {
-                            return {
-                                type: 'FILTER_POKEMON_BY_TYPE',
-                                payload: type
-                            }
-                        }
+export function filterPokemonByCreate(payload) {
+    return { type: 'FILTER_POKEMON_BY_CREATE', payload }
+}
+//recibo un string o ['', '']
+export function filterPokemonByType(type) {
+    return {
+        type: 'FILTER_POKEMON_BY_TYPE',
+        payload: type
+    }
+}
+export function cleanDetail() {
+    return { type: 'CLEAN_DETAIL' }
+}

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetails } from "../../StoreFiles/Actions/index";
+import { getDetails, cleanDetail } from "../../StoreFiles/Actions/index";
 // import NavBar from "../navBar/navBar";
 import css from "./details.module.css";
 
@@ -10,12 +10,24 @@ export default function Details(props) {
     const id = props.match.params.id
     ///console.log(props)
     const dispatch = useDispatch()
+
     useEffect(() => {
+        dispatch(cleanDetail());
         dispatch(getDetails(id));
     }, [dispatch,id])
 
+    // useEffect(() => {
+    //     return ()=>{
+    //         {setTimeout(dispatch(cleanDetail()),500)}
+    //     }
+    // },[])
+
     const myPokemon = useSelector((state) => state.details)
-    console.log(myPokemon)
+    
+
+
+
+    //console.log(myPokemon)
     return (
         <div className={css.pokemon}>
             {/*<NavBar/> */}
@@ -31,13 +43,13 @@ export default function Details(props) {
                         <h4 className={css.info}>Speed: {myPokemon[0].speed}</h4>
                         <h4 className={css.info}>Height: {myPokemon[0].height}</h4>
                         <h4 className={css.info}>Weight: {myPokemon[0].weight}</h4>
-                        <h3 className={css.typeContainer}>Type: {myPokemon[0].types}</h3>
+                        <h3 className={css.typeContainer}>Type:{myPokemon[0].createdInDb? myPokemon[0]?.types?.map(el =><div>{el.name}</div>):myPokemon[0]?.types.map(el =>el)}</h3>
                        
                     </div> :
                     <p>Loading....</p>
 
             }
-            <Link to='/home'><button>Back</button></Link>
+            <Link to='/home' ><button>Back</button></Link>
 
         </div>
     )

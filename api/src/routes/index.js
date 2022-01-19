@@ -136,7 +136,7 @@ router.get("/pokemons", async (req, res) => {
         
         namePoken.length ?
             res.status(200).send(namePoken) :
-            res.status(404).send('Pokemos no encontrado')
+            res.send([`Pokemos no encontrado ${name}`])
     } else {
         res.status(200).send(allPokens)
     }
