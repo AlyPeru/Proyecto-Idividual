@@ -10,9 +10,9 @@ export default function SearchBar() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        if(name ===''){
-            return alert('no puede estar vacio')
-        }
+        // if(name ===''){
+        //     return alert('no puede estar vacio')
+        // }
         const resp = name?.toLowerCase();
         dispatch(getNamePokemon(resp));
         setName("");
@@ -21,7 +21,7 @@ export default function SearchBar() {
     function handleSearch(e){
         e.preventDefault()
 
-        if(e.target.value === ''){
+        if(e.target.value === ' '){
             
             setName(e.target.value)
         }else{

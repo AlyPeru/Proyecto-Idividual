@@ -8,7 +8,6 @@ export function getPokemons() {
             payload: json.data
         })
     }
-
 }
 
 export function getNamePokemon(name) {
@@ -86,5 +85,5 @@ export function filterPokemonByType(type) {
     }
 }
 export function cleanDetail() {
-    return { type: 'CLEAN_DETAIL' }
+    return { type: 'CLEAN_DETAIL'}
 }

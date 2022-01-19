@@ -11,7 +11,6 @@ export default function CreatePokemon() {
     const types = useSelector((state) => state.types);
     const [error, setError] = useState({});
 
-
     const initial = {
         name: '',
         hp: '',
@@ -25,20 +24,6 @@ export default function CreatePokemon() {
     };
 
     const [input, setInput] = useState(initial)
-    // const resetState = () =>{
-    //     setInput({
-    //             name: '',
-    //             hp: '',
-    //             sprites: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/123.png',
-    //             attack: '',
-    //             defense: '',
-    //             speed: '',
-    //             height: '',
-    //             weight: '',
-    //             types: []
-    //         });
-    //         // history.push("/home")
-    // };
 
     // ***********Expresiones Regulares y Validaciones***********
 
@@ -166,12 +151,12 @@ export default function CreatePokemon() {
     // ********************** FORM******************
 
     return (
-        <div>
+        <div >
             <Link to="/home"> <button>Back</button></Link>
             <h1>CREATE POKEMON</h1><br />
-            <form onSubmit={(e) => handleSubmit(e)}>
+            <form onSubmit={(e) => handleSubmit(e)}> 
                 <div>
-                    <label>Name: </label>
+                    <label className= {css.etiqueta}>Name: </label>
                     <input
                         type="text"
                         value={input.name}
@@ -303,8 +288,6 @@ export default function CreatePokemon() {
                             </div>
                         )
                     })
-                    // <button onClick={() => handleDeleteTemperament(el.name)} className={style.x}>X</button>
-
                     }
                 </div>
                 <button type='submit'>Create Pokemon</button>

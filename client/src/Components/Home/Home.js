@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { getPokemons, orderByAZ, filterPokemonByCreate, getTypes, filterPokemonByType, orderPokemonByAttack } from "../../StoreFiles/Actions";
 import Pokemon from '../Pokemon/Pokemon';
 import Paginado from "../Paginado/Paginado";
@@ -18,16 +19,16 @@ export default function Home() {
 
     //*****************PAGINADO************************* */
     const [currentPage, setCurrentPage] = useState(1);
-    const [pokePerPage, setPage] = useState(12);
-    const idLastPokem = currentPage * pokePerPage;
-    const idFirstPokem = idLastPokem - pokePerPage;
-    const currentPokem = allPokemons.slice(idFirstPokem, idLastPokem)
+    const [pokePerPage,] = useState(12);
+    const idLastPokem = currentPage * pokePerPage;//12
+    const idFirstPokem = idLastPokem - pokePerPage;//0
+    const currentPokem = allPokemons.slice(idFirstPokem, idLastPokem)//0v12
 
     const paginado = (numPag) => {
         setCurrentPage(numPag)
     }
 
-    const [order, setOrder] = useState('');
+    const [, setOrder] = useState('');
 
     useEffect(() => {
         
@@ -98,12 +99,10 @@ export default function Home() {
                     <option value='max'>Max</option>
                     <option value='min'>Min</option>
                 </select>
-
-                {/* <Paginado2 /> */}
-                <button onClick={() => paginado(currentPage === 4 ? currentPage : currentPage + 1)}>next</button>
-                <button onClick={() => paginado(currentPage === 1 ? currentPage : currentPage - 1)}>prev</button>
+                   
                 <Paginado allPokemons={allPokemons.length} paginado={paginado} pokePerPage={pokePerPage} />
-                
+               
+             
                 <div className={css.container_home}>
                     {allPokemons.length > 0 ?
     
@@ -120,6 +119,7 @@ export default function Home() {
                         <p>Loading....</p>
 
                     }
+                    
                 </div>
             </div>
         </div>

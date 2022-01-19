@@ -43,7 +43,7 @@ export default function Details(props) {
                         <h4 className={css.info}>Speed: {myPokemon[0].speed}</h4>
                         <h4 className={css.info}>Height: {myPokemon[0].height}</h4>
                         <h4 className={css.info}>Weight: {myPokemon[0].weight}</h4>
-                        <h3 className={css.typeContainer}>Type:{myPokemon[0].createdInDb? myPokemon[0]?.types?.map(el =><div>{el.name}</div>):myPokemon[0]?.types.map(el =>el)}</h3>
+                        <h3 className={css.typeContainer}>Type: {myPokemon[0].createdInDb? myPokemon[0]?.types?.map(el =><div>{el.name }</div>):myPokemon[0]?.types.map(el =>el) }</h3>
                        
                     </div> :
                     <p>Loading....</p>

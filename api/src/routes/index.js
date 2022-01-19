@@ -3,9 +3,8 @@ const { Router } = require('express');
 // Ejemplo: router.use('/auth', authRouter);
 
 const axios = require('axios');
-
 const { Type, Pokemon } = require('../db');
-const { get } = require('superagent');
+
 
 const router = Router();
 
@@ -47,7 +46,7 @@ let getApiUrl = async () => {
     for (let i = 1; i <= 40; i++) {
         arrProm = [...arrProm, axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)];
     }
-    //ahora axios all para poder reducir el tiempo de la solicitud
+
     await axios.all(arrProm).then(
         axios.spread((...responses) => {
             responses.forEach((elem) => {
@@ -73,34 +72,8 @@ let getApiUrl = async () => {
     // console.log(infoTotalApi);
     return infoTotalApi;
 };
-// [
-//     {
-//         "id": "68877892-0268-454d-ad12-442e7e06371f",
-//         "name": "David",
-//         "hp": 60,
-//         "attack": 45,
-//         "defense": 50,
-//         "speed": 70,
-//         "sprites": " https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/12.png",
-//         "height": 11,
-//         "weight": 320,
-//         "createdInDb": true,
-//         "createdAt": "2022-01-15T17:30:22.861Z",
-//         "updatedAt": "2022-01-15T17:30:22.861Z",
-//         "types": [
-//             {
-//                 "name": "flying"
-//             },
-//             {
-//                 "name": "bug"
-//             }
-//         ]
-//     }
-// ]
-// type: [' sdsd', 'sddsd'] cambiar el nombre de la api
 
 let getDbInfo = async () => {
-    // del modelo ocupacion traeme el nombre y el through: es una comprobacion obligatoria  que se hace para que traiga mediante los atributos.
     let todo = await Pokemon.findAll({
         include: {
             model: Type,
@@ -111,8 +84,6 @@ let getDbInfo = async () => {
         }
     });
 
-    // let todos = todo.map(elm=>({...elm, types: elm.types.map(el=>el.name)}))
-    // console.log(todos)
     return todo
 };
 
@@ -129,8 +100,7 @@ let getAllPokemons = async () => {
 router.get("/pokemons", async (req, res) => {
     const name = req.query.name;
     let allPokens = await getAllPokemons()///.catch(err => console.log('ERROR', err));
-//buscar por endpoint name 1 nombre
-//buscar por squeeliza findOne Pokemon.findOne({ where: { name }) 
+
     if (name) {
         const namePoken = await allPokens.filter(el => el.name.toLowerCase().includes(name.toLowerCase()));
         
@@ -163,7 +133,7 @@ router.post("/pokemons", async (req, res) => {
     })
     let dbTypes = await Type.findAll({ where: { name: types } })
     createPoken.addType(dbTypes)
-    ///OJO AGREGE SSSSS ADDTYPES
+
     //tengo que encontrar del modelo Types todas los que coincidan con lo que recibo en body
 
     res.send("Pokemon Creado con exito!!!!!")
